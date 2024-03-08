@@ -2,6 +2,8 @@ package com.NamanJain.HealthNew.controller;
 
 import com.NamanJain.HealthNew.entity.Patient;
 import com.NamanJain.HealthNew.service.PatientService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,6 +45,14 @@ public class PatientController {
     @GetMapping("/patients~/name/{name}")
     public Patient fetchPatientByName(@PathVariable("name") String patientName) {
         return patientService.fetchPatientByName(patientName);
+    }
+
+    Logger logger = LoggerFactory.getLogger(PatientController.class);
+
+    @RequestMapping("/Patienttest")
+    public String test() {
+        this.logger.warn("This is working message");
+        return "Testing message";
     }
 
 }
